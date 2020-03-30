@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "meteor run",
-    "prebuild": "meteor npm install",
+    "prebuild": "meteor npm install && rm -rf .deploy/*",
     "build": "npm run prebuild && meteor build .deploy/ --architecture os.linux.x86_64 --allow-superuser",
     "preinstall": "cd .deploy && tar -zxf decowrite.tar.gz",
     "install": "cd .deploy/bundle/programs/server && meteor npm install",

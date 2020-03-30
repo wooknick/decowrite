@@ -1,0 +1,58 @@
+Arguments: 
+  /Users/future/.nvm/versions/node/v12.13.0/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js add React
+
+PATH: 
+  /usr/local/bin/python3:/Users/future/.nvm/versions/node/v12.13.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/future/miniconda3/condabin:/usr/local/bin/python3:/Users/future/.nvm/versions/node/v12.13.0/bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.13.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/React: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:66926:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:140564:22)
+      at Request.emit (events.js:210:5)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:141536:10)
+      at Request.emit (events.js:210:5)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:141458:12)
+      at Object.onceWrapper (events.js:299:28)
+      at IncomingMessage.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1183:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "name": "meteor2020",
+    "private": true,
+    "scripts": {
+      "start": "meteor run",
+      "test": "meteor test --once --driver-package meteortesting:mocha",
+      "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+      "visualize": "meteor --production --extra-packages bundle-visualizer"
+    },
+    "dependencies": {
+      "@babel/runtime": "^7.3.4",
+      "meteor-node-stubs": "^0.4.1",
+      "react": "^16.5.0",
+      "react-dom": "^16.5.0"
+    },
+    "meteor": {
+      "mainModule": {
+        "client": "client/main.jsx",
+        "server": "server/main.js"
+      },
+      "testModule": "tests/main.js"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -2,8 +2,14 @@
   "name": "meteor2020",
   "private": true,
   "scripts": {
-    "start": "meteor run",
-    "build": "meteor build ./deploy"
+    "dev": "meteor run",
+    "prebuild": "meteor npm install",
+    "build": "npm run prebuild && meteor build .deploy/ --architecture os.linux.x86_64 --allow-superuser",
+    "preinstall": "cd .deploy && tar -zxf decowrite.tar.gz",
+    "install": "cd .deploy/bundle/programs/server && meteor npm install",
+    "postinstall": "cd ../../../../",
+    "prestart": "npm run build && npm run install",
+    "start": "pm2 start ecosystem.config.js --env production"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",

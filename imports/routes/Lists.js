@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  width: 100vw;
+  width: 100%;
   max-width: 550px;
   height: ${props => (props.isLoggedIn ? "130px" : "100px")};
   background-color: white;
@@ -29,6 +29,7 @@ const Header = styled.div`
 const Title = styled.div`
   width: 100%;
   height: 70px;
+  word-wrap: break-word;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -64,6 +65,7 @@ const MyLink = styled(Link)`
 `;
 
 const FlatLink = styled(Link)`
+  width: 100%;
   text-decoration: none;
   color: ${props => props.theme.darkBlue};
 `;
@@ -88,7 +90,9 @@ const Lists = withRouter(({ history }) => {
       <Wrapper>
         <Header isLoggedIn={isLoggedIn}>
           <FlatLink to="/">
-            <Title> 지금 읽기 좋은 이야기 </Title>
+            <Title>
+              <span>지금 읽기 좋은 이야기</span>
+            </Title>
           </FlatLink>
           {isLoggedIn && nickname && (
             <LoginInfo>

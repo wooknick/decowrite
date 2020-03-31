@@ -19,14 +19,14 @@ export default createGlobalStyle`
         overflow: hidden !important;
         font-family: "Nanum Gothic";
         background-color: ${props => props.theme.bgColor};
-        color: ${props => props.theme.blueBlack};
+        color: ${props => props.theme.darkBlue};
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: grey;
     }
     a{
-        color: ${props => props.theme.blue};
+        color: ${props => props.theme.darkBlue};
         text-decoration: none;
         -webkit-tap-highlight-color:transparent;
     }

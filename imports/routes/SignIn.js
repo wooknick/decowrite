@@ -81,6 +81,7 @@ const SignIn = withRouter(({ history }) => {
   const [loginMessage, setLoginMessage] = useState("");
 
   const onSubmit = e => {
+    console.log("now");
     Meteor.loginWithPassword({ username: id.value }, pw.value, (err, res) => {
       if (err) {
         console.debug(err);
@@ -89,13 +90,10 @@ const SignIn = withRouter(({ history }) => {
         } else if (err.reason === "Incorrect password") {
           setLoginMessage("잘못된 비밀번호입니다.");
         }
-        return;
       } else {
         history.push("/lists");
-        return;
       }
     });
-    return;
   };
 
   return (

@@ -124,10 +124,8 @@ const SignUp = withRouter(({ history }) => {
       err => {
         if (err) {
           console.debug(err);
-          return;
         } else {
           history.push("/lists");
-          return;
         }
       }
     );

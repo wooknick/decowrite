@@ -2,6 +2,14 @@ import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import fse from "fs-extra";
 import Files from "./Files";
+import { PythonShell } from "python-shell";
+
+const pythonShellOptions = {
+  mode: "text",
+  pythonPath: Meteor.settings.PYTHON_PATH,
+  pythonOptions: ["-u"],
+  scriptPath: Meteor.settings.SCRIPT_PATH
+};
 
 Meteor.methods({
   "file.upload": ({ title, author, userId, fileData }) => {
@@ -75,9 +83,19 @@ Meteor.methods({
     };
   },
   "file.getOneBook": ({ _id }) => {
-    Meteor.Ob;
     return {
       data: Files.findOne({ _id: new Mongo.ObjectID(_id) })
     };
+  },
+  "file.callPythonLogic": objectId => {
+    const ePythonShellOptions = {
+      ...pythonShellOptions,
+      args: [objectId._str]
+    };
+    PythonShell.run("analysis.py", ePythonShellOptions, (err, result) => {
+      if (err) throw err;
+      console.log(result);
+      return result[1];
+    });
   }
 });

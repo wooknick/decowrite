@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  min-width: 400px;
   max-width: 100vw;
   height: 100%;
   min-height: 480px;
@@ -19,6 +20,8 @@ const DefaultCell = styled.div`
 `;
 
 const CoverCell = styled.div`
+  width: 100%;
+  height: 100%;
   span {
     font-size: 32px;
     font-weight: bold;

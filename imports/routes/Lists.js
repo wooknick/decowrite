@@ -53,7 +53,7 @@ const ListCards = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: ${props => (props.isLoggedIn ? "130px" : "100px")};
+  padding-top: ${props => (props.isLoggedIn ? "140px" : "100px")};
   overflow-y: scroll;
 `;
 

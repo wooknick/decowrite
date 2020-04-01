@@ -24,7 +24,6 @@ const Wrapper = styled.div`
 const Title = styled.div`
   height: 40px;
   font-size: 25px;
-  /* background-color: red; */
   font-weight: bold;
   margin-bottom: 30px;
 `;
@@ -79,6 +78,10 @@ const UploadButton = styled.label`
   }
 `;
 
+const Messages = styled.div`
+  color: red;
+`;
+
 const FunctionLine = styled.div`
   width: 140px;
   height: 60px;
@@ -86,11 +89,20 @@ const FunctionLine = styled.div`
   justify-content: space-between;
 `;
 
+const Cover = styled.div`
+  position: fixed;
+  background-color: white;
+  width: 100vw;
+  height: 100ch;
+`;
+
 const BookUpload = ({ setUploadModal, onClick }) => {
   const title = useInput("");
   const fileName = useInput("");
   const fileRef = useRef();
   const { user, userId, isLoggedIn, nickname } = useContext(AppContext);
+  const [isUploading, setIsUploading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleCancel = () => {
     setUploadModal(v => !v);
@@ -107,7 +119,7 @@ const BookUpload = ({ setUploadModal, onClick }) => {
 
   const handleSubmit = e => {
     if (title.value === "" || fileRef.current.value === "") {
-      alert("모든 필드를 입력하셔야 합니다.");
+      setMessage("모든 필드를 입력해 주세요.");
       return;
     }
     const file = fileRef.current.files[0];
@@ -127,6 +139,13 @@ const BookUpload = ({ setUploadModal, onClick }) => {
             return;
           } else {
             // console.log(res); // upload book's ObjectID
+            Meteor.call("file.callPythonLogic", res, (err, res) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log(res);
+              }
+            });
             setUploadModal(v => !v);
           }
         }
@@ -155,6 +174,7 @@ const BookUpload = ({ setUploadModal, onClick }) => {
           <UploadButton htmlFor="file">파일 업로드</UploadButton>
           <input type="file" id="file" onChange={handleUpload} ref={fileRef} />
         </form>
+        <Messages>{message}</Messages>
       </Contents>
 
       <FunctionLine>

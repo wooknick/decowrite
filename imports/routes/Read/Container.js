@@ -29,9 +29,6 @@ const Container = withRouter(({ history, match }) => {
       ret = [...ret, ...chapter.chapter_contents];
     });
     setContents(ret);
-    if (index.length === 0) {
-      setEmotions(v => [-1, ...v]);
-    }
   };
 
   useEffect(() => {

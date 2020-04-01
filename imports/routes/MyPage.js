@@ -6,6 +6,7 @@ import LogoutButton from "../components/LogoutButton";
 import ListLine from "../components/ListLine";
 import AddButton from "../components/AddButton";
 import BookUpload from "../components/BookUpload";
+import PythonShell from "../components/PythonShell";
 
 const Wrapper = styled.div`
   width: 100%;

@@ -137,7 +137,7 @@ const Presenter = ({
   const sliderRef = useRef();
   const [page, setPage] = useState(0);
   const [emotion, setEmotion] = useState(-1);
-  const emotions = getEmotions;
+  const emotions = index.length === 0 ? getEmotions : [-1, ...getEmotions];
 
   const settings = {
     dots: false,
@@ -146,6 +146,7 @@ const Presenter = ({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    lazyLoad: true,
     initialSlide: 0,
     swipeToSlide: true,
     touchThreshold: 5,
@@ -174,7 +175,7 @@ const Presenter = ({
               if (content.isChapterCover) {
                 return (
                   <ContentCell
-                    key={i}
+                    key={i * 100}
                     text={content.text}
                     type="chapCover"
                     chap_num={content.chapter_num}

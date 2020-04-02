@@ -150,26 +150,22 @@ DUMMY = {
   ]
 }
 
-
 # db settings
-mongo_url = os.environ["MONGO_URL"]
-t = re.search('mongodb.*/', mongo_url).end()
-mongo_hostname = mongo_url[:t]
-mongo_db = mongo_url[t:]
+mongo_url_what = os.environ["MONGO_URL_FOR_PYTHON"]
 
 # db start
-my_client = pymongo.MongoClient(mongo_hostname)
-my_db = my_client[mongo_db]
-my_col = my_db[COLLECTION]
+client = pymongo.MongoClient(mongo_url_what)
+db = client["decowrite"]
+col = db[COLLECTION]
 
 # find data
-result = my_col.find_one({"_id": ObjectId(QUERY_ID)},{"_id": 1, "title": 1, "status":1, "file":1})
+result = col.find_one({"_id": ObjectId(QUERY_ID)},{"_id": 1, "title": 1, "status":1, "file":1})
 file = result["file"]
 
 # analysis logic - to do
 print(file)
 
 # after anlaysis logic, upadate "status", "analysis"
-my_col.update_one({"_id": ObjectId(QUERY_ID)}, {"$set":{"status":"SUCCESS", "analysis":DUMMY}}, upsert=True);
+col.update_one({"_id": ObjectId(QUERY_ID)}, {"$set":{"status":"SUCCESS", "analysis":DUMMY}}, upsert=True);
 
 print("hello i'm python code. don't worry")

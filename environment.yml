@@ -21,5 +21,4 @@ dependencies:
   - zlib=1.2.11=h1de35cc_3
   - pip:
     - pymongo==3.5.1
-prefix: /Users/future/miniconda3/envs/decowrite
 

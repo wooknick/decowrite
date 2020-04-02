@@ -2,7 +2,7 @@
   "name": "meteor2020",
   "private": true,
   "scripts": {
-    "dev": "meteor --settings settings.json",
+    "dev": "MONGO_URL='mongodb+srv://decowrite:artntech18@cluster0-h5omq.gcp.mongodb.net/decowrite' meteor --settings settings.json",
     "prebuild": "meteor npm install && rm -rf .deploy/*",
     "build": "npm run prebuild && meteor build .deploy/ --architecture os.linux.x86_64 --allow-superuser",
     "preinstall": "cd .deploy && tar -zxf decowrite.tar.gz",

@@ -14,8 +14,8 @@
     "rebuild": "npm run build && npm run install && npm run restart",
     "stop": "pm2 stop ecosystem.config.js",
     "delete": "pm2 delete ecosystem.config.js",
-    "envexport": "conda env export | grep -v '^prefix: ' > ./environment.yml",
-    "envcreate": "conda env create -f environment.yml"
+    "envexport": "conda list -e > ./python/requirements.txt",
+    "envupdate": "conda install --file ./python/requirements.txt"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
